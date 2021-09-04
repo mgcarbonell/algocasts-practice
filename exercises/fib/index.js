@@ -8,11 +8,27 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {
-  if (n < 2) {
-    return n;
-  }
-  return (fib(n - 1) + fib(n - 2))
-}
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+//   return (fib(n - 1) + fib(n - 2))
+// }
+
+// iterative refactor
+// there's a trick: the first two numbers cannot be generated (0, 1)
+// run time = O(n)
+// function fib(n) {
+//   const result = [0, 1];
+
+//   for (let i = 2; i <= n; i++) {
+//     const a = result[i - 1];
+//     const b = result[i - 2];
+//     result.push(a + b);
+//   }
+
+//   return result[n];
+// }
+
 
 module.exports = fib;
