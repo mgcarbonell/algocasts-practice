@@ -16,14 +16,7 @@ class LinkedList {
 
   insertFirst(data) {
     this.head = new Node(data, this.head);
-    // if (this.head === null) {
-    //   this.head = new Node(data, this.head);
-    // } else {
-    //   let temp;
-    //   let newNode = new Node(data, this.head);
-    //   temp = this.head;
-    //   this.head = newNode;
-    // }
+
   }
 
   size() {
@@ -54,9 +47,85 @@ class LinkedList {
       }
       node = node.next
     }
+  }
 
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    if (!this.head) return;
+
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    if (!this.head) return;
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let previous = this.head
+    let node = this.head.next;
+
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+
+    previous.next = null;
+  }
+
+  insertLast(data) {
+    const last = this.getLast();
+
+    if (last) {
+      last.next = new Node(data);
+    } else {
+      this.head = new Node(data);
+    }
+  }
+
+  getAt(node) {
 
   }
 }
 
 module.exports = { Node, LinkedList };
+
+// insertLast(data) {
+//   const newNode = new Node(data);
+
+//   if (!this.head) {
+//     this.head = newNode;
+//   }
+
+//   const last = this.getLast();
+
+//   last.next = newNode;
+// }
+// if (this.head === null) {
+  //   this.head = new Node(data, this.head);
+    // } else {
+    //   let temp;
+    //   let newNode = new Node(data, this.head);
+    //   temp = this.head;
+    //   this.head = newNode;
+    // }
+
+  // removeLast() {
+  //   if (!this.head) return;
+  //   if (!this.head.next) return this.clear();
+
+  //   let last = this.getLast();
+  //   let node = this.head
+
+  //   while (node) {
+  //     if (node.next === last) {
+  //       node.next = null;
+  //     }
+  //     node = node.next;
+  //   }
+  //   return last;
+  // }
