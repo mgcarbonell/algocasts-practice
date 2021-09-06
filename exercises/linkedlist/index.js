@@ -138,8 +138,32 @@ class LinkedList {
     previous.next = node;
   }
 
-  forEach() {
+  forEach(fn) {
+    // if (!this.head) return;
 
+    // let node = this.head;
+
+    // while (node) {
+    //   fn(node)
+    //   node = node.next;
+    // }
+    let node = this.head;
+    let counter = 0;
+    while (node) {
+      fn(node, counter);
+      node = node.next;
+      counter++;
+    }
+  }
+
+  // allows for...of to be used on LinkedList
+  *[Symbol.iterator]() {
+    let node = this.head;
+
+    while (node) {
+      yield node;
+      node = node.next
+    }
   }
 }
 
